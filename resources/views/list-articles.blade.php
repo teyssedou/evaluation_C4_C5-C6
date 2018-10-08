@@ -26,33 +26,30 @@
                         @endif
                     @endforeach
 
-                  <ins>Unité de mesure:</ins><br />
-                  @foreach ($units as $unit)
+                    <ins>Unité de mesure:</ins><br />
+                    @foreach ($units as $unit)
                         @if ($unit->id == $article->unit_id)
                             <b class="title is-4">{{ $unit->name }}</b><br />
                         @endif
                     @endforeach
                   
-                  <ins>Prix de Vente:</ins><br />
-                  <b class="title is-4">{{ $article->sales_price }} Euros</b>
+                    <ins>Prix de Vente:</ins><br />
+                    <b class="title is-4">{{ $article->sales_price }} Euros</b>
                 </p>
             
                 <div class="box has-text-centered">
-                        <form action="/modify-article/{{ $article->id }}" method="get">
-                        @csrf
-        
-                        {{-- Shows details of one handle --}}
+                    <form action="/modify-article/{{ $article->id }}" method="get">
+                    @csrf
                         <button class="button is-link" value='{{ $article->id }}' name="updateArticle" type="submit">Modifier</button>
-                         </form>
+                     </form>
                
 
-                {{-- Alert box to confirm the deletion --}}
+                    
                     <form class="supprimer" action="/delete/{{ $article->id }}" method="POST">
                         <input type="hidden" name="_method" value="Delete">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                       @csrf
                         <input type="submit" class='button is-danger is-rounded' value="Supprimer"> 
-                        @csrf
-                        @method('delete')
                     </form>
                 
                 </div>    
@@ -60,5 +57,14 @@
 </div>
 @endforeach
     </div>
-</section>
+</section>   
+@endsection
+
+@section('script')
+<script>
+    /* --- Alert box to confirm the deletion --- */
+    $(".supprimer").on("click", function(){
+        return confirm("Êtes-vous sûr de supprimer cet article?");
+    });    
+</script> 
 @endsection

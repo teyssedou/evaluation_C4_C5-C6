@@ -18,15 +18,20 @@ Route::view('/', 'welcome');
 Route::get('/create-article', 'ArticlesController@showCreate');
 Route::post('/create-article', 'ArticlesController@create');
 
+/* --- "list-article" Page --- */
 Route::get('/list-articles', 'ArticlesController@list');
 Route::delete('/delete/{id}', 'ArticlesController@delete');
 
+/* --- "Modify-article" Page --- */
 Route::get('/modify-article/{id}', 'ArticlesController@show');
 Route::post('/modify-article/{id}', 'ArticlesController@update');
 
+/* --- "Statistic" Page --- */
 Route::get('/statistic', 'StatisticController@totalValue');
 
+/* --- "Historic" Page --- */
 Route::get('/historic', 'MovementController@list');
 
+/* --- "Saisie-mouvement" Page --- */
 Route::get('/saisie-mouvement', 'MovementController@view');
 Route::post('/saisie-mouvement/create', 'MovementController@create');

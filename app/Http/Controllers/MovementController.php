@@ -9,6 +9,7 @@ use App\Movement_type;
 
 class MovementController extends Controller
 {
+    // To show the list of movement in "historic" Page
     public function list()
     {
         $mouvements = Movement::join('articles', 'movements.article_id', '=', 'articles.id')
@@ -22,6 +23,7 @@ class MovementController extends Controller
         ]);
     }
 
+    // Filled each select field in "saisie-mouvement" Page
     public function view()
     {
         $articles = Article::all();
@@ -35,6 +37,7 @@ class MovementController extends Controller
         ]);
     }
 
+    // Create a new Movement in "saisie-mouvement" Page
     public function create()
     {
         $movements = new Movement();

@@ -9,6 +9,7 @@ use App\Unit;
 
 class ArticlesController extends Controller
 {
+    // /* --- To show the list of articles in 'List-articles' Page --- */
     public function list()
     {
         $articles = Article::all();
@@ -22,6 +23,7 @@ class ArticlesController extends Controller
         ]);
     }
 
+    // /* --- To show the category and unit in a select in 'create-article' Page --- */
     public function showCreate()
     {
         $categories = Category::all();
@@ -33,6 +35,7 @@ class ArticlesController extends Controller
         ]);
     }
 
+    // /* --- To create a new article in 'create-articles' Page --- */
     public function create()
     {
         request()->validate([
@@ -50,6 +53,7 @@ class ArticlesController extends Controller
         return redirect('/list-articles');
     }
 
+    // /* --- To fill in all the fields corresponding to the id of the chosen article in 'Modify-article' Page --- */
     public function show($id)
     {
         $article = Article::where('id', $id)->first();
@@ -67,6 +71,7 @@ class ArticlesController extends Controller
         ]);
     }
 
+    // /* --- To update the chosen article in 'modify-article' Page --- */
     public function update($id)
     {
         $update = Article::where('id', $id)->update([
@@ -80,6 +85,7 @@ class ArticlesController extends Controller
         return redirect('/list-articles');
     }
 
+    // /* --- To delete a chosen article in 'list-articles' Page --- */
     public function delete($id)
     {
         $resultat = Movement::where('article_id', $id)->first();
