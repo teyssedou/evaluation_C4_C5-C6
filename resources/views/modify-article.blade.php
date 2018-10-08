@@ -7,7 +7,7 @@
             Modification de l'article <b>{{ $article->name }}</b>
         </div>
                 
-        <form method="post" action='/modify-article/{id}' class="section">
+        <form method="post" action='/modify-article/{{ $article->id }}' class="section">
         @csrf
             <div class="field">
                 <label class="label">Nom</label>
